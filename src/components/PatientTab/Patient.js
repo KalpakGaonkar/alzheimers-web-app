@@ -118,7 +118,6 @@ const Patient = () => {
   const [open, setOpen] = React.useState(false);
   const [ image,setImage ] = useState(null);
   const [stage, setStage] = useState('');
-  const [showResults, setShowResults] = React.useState(false);
 
   const handleOpen = () => {
     setOpen(true);
