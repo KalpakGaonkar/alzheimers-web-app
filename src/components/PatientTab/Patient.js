@@ -118,6 +118,7 @@ const Patient = () => {
   const [open, setOpen] = React.useState(false);
   const [ image,setImage ] = useState(null);
   const [stage, setStage] = useState('');
+  const [showResults, setShowResults] = React.useState(false);
 
   const handleOpen = () => {
     setOpen(true);
@@ -143,7 +144,6 @@ const Patient = () => {
                 // self.setState({imagePrediction:data})
                 })
         
-            
     }
             
     const handleUpload = () => {
@@ -160,21 +160,27 @@ const Patient = () => {
                 storage.ref("images").child(image.name)
             }
         )
+        setStage('');
         }
     console.log("image:",image)
   
-    const body = (
-    <div style={modalStyle} className={classes.paper}>
     
+    const body = (
+    
+    <div style={modalStyle} className={classes.paper}>
       <h2 id="simple-modal-title">Upload patients latest MRI Scan</h2>
       <p id="simple-modal-description">
         Select Image in .jpg format
       </p>
       <input type='file' onChange={handleChange} ></input>
+      {stage.length>0 &&
             <button type="submit" onClick={handleUpload} >Upload</button>
-            <p id="p">{ stage }</p>
-    </div>
-  );
+      
+      }
+            {/* <p id="p">{ stage }</p> */}
+            
+            </div>
+    );
     return (
         <>
 
